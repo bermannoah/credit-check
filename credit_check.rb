@@ -6,13 +6,27 @@ valid = false
 
 # double the value of every second digit moving right - > left
 
-def card_check(card_number)
-  numbers = card_number.split("")
-  
+  # break string into separate integers
 
+  numbers_to_modify = card_number.split("").map(&:to_i)
 
-# sum (or subtract 9 from) the digits of anything over 9
+  # modify the even indexes in the array
 
+  even_numbers = numbers_to_modify.values_at(* numbers_to_modify.each_index.select {|i| i.even?})
+
+  puts modified_numbers
+
+  # join the results into a new array
+
+# def modify_number(number)
+#
+#   number * 2
+# end
+#
+# def modify_credit_card_number(card_number)
+#   numbers = card_number.split("")
+#   results = numbers.collect do |number|
+#   modified_number = modify_number(number)
 # sum all the digits
 
 # iff the total modulo 10 is equal to 0 then the number is valid
