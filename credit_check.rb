@@ -1,4 +1,4 @@
-card_number = "5541808923795240"
+card_number = "6011797668867828"
 
 valid = false
 
@@ -77,8 +77,6 @@ if b8 >= 10
 else
   a0 = b8.to_s
 end
-
-new_card_number = a0.to_s + a1 + a2.to_s + a3 + a4.to_s + a5 + a6.to_s + a7 + a8.to_s + a9 + a10.to_s + a11 + a12.to_s + a13 + a14.to_s + a15
 
 sum_of_all_digits = a0.to_i + a1.to_i + a2.to_i + a3.to_i + a4.to_i + a5.to_i + a6.to_i + a7.to_i + a8.to_i + a9.to_i + a10.to_i + a11.to_i + a12.to_i + a13.to_i + a14.to_i + a15.to_i
 
