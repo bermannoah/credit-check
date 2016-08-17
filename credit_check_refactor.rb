@@ -1,25 +1,32 @@
-card_number = "4929735477250543"
-puts card_number
-# valid = false
+card_number = "5541801923795240"
+numbers_to_multiply = []
+numbers_to_stay_the_same = []
+modified_number = []
 usable_array = card_number.scan(/./).map { |e| e.to_i }
 usable_array.each_with_index do |x, index|
 
   if index.even?
-    a = x * 2
-  elsif index.odd?
-    b = x
+    numbers_to_multiply << (x * 2)
   else
-    c = x
+    numbers_to_stay_the_same << x
   end
+end
 
-  if a.to_i >= 10
-    c = (a - 9)
+all = numbers_to_multiply + numbers_to_stay_the_same
+
+all.each do |x|
+  if x >= 10
+    x = "#{x - 9}"
   else
-    c = a
+    x = "#{x}"
   end
+  modified_number << x.to_i
+end
 
-  f = "#{c}" + "#{b}"
-  print f
+sum = modified_number.inject(:+)
 
-
+if sum % 2 == 0
+  puts "A valid credit card!"
+else
+  puts "Not a valid credit card!"
 end
