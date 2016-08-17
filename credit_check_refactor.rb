@@ -1,25 +1,25 @@
-card_number = "6011797668867828"
+card_number = "4929735477250543"
+puts card_number
+# valid = false
+usable_array = card_number.scan(/./).map { |e| e.to_i }
+usable_array.each_with_index do |x, index|
 
-valid = false
-
-usable_array = card_number.scan(/./).map { |e| e.to_i } # converts string to usable array
-# multiply every other number by 2
-
-usable_array.each_with_index do |number, idx|
-  number = usable_array[0..15]
-  
-
-  if idx % 2 == 0
-    print number * 2
+  if index.even?
+    a = x * 2
+  elsif index.odd?
+    b = x
   else
-    print number
+    c = x
   end
 
+  if a.to_i >= 10
+    c = (a - 9)
+  else
+    c = a
+  end
 
-#   usable_umultiplied_array = multiplied_array.scan(/./).map { |e| e.to_i }
+  f = "#{c}" + "#{b}"
+  print f
+
+
 end
-
-# puts usable_array
-
-
-# combine everything together
