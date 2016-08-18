@@ -1,23 +1,31 @@
-valid_card_number = "5541808923795240"
-invalid_card_number = "4024007106512380"
+puts "Enter card number > "
+card_number = gets.chomp.to_s
 
-# split the string into individual characeters
-# convert stringed digits to integers
-usable_array = valid_card_number.chars.map { |num| num.to_i }
-# double the value of every second digit
+# allows entry of numbers
+
+usable_array = card_number.chars.map { |num| num.to_i } # converts entry string to integers, individual characters
+
 numbers_to_multiply = usable_array.map.with_index do |num, index|
-  index.even? ? num * 2 : num
+  if card_number.length == 15               # checks to see if card_number is an amex, a mc/visa, or an error
+    index.odd? ? num * 2 : num              # performs necessary math depending on type of card
+  elsif card_number.length == 16
+    index.even? ? num * 2 : num
+  else
+    num = 1 # resets num to one so it only puts once!
+    puts "That is not a credit card number."
+    exit
+  end
 end
-# if the digit is over 9, add the 2 numbers together
+
 final_numbers = numbers_to_multiply.map do |multiplied|
-  multiplied >= 10 ? multiplied - 9 : multiplied
+  multiplied >= 10 ? multiplied - 9 : multiplied                  # if anything is over 10, subtracts 9
 end
-# take the sum of the remaining digits
-sum = final_numbers.inject(:+)
-if sum % 10 == 0
-  puts "The number is valid."
+
+sum = final_numbers.inject(:+)                    # sums all numbers
+if sum % 10 == 0                                  # checks to see if the sum is divisible by 10, gives result
+  puts "The number is valid!"
 else
-  puts "The number is invalid."
+  puts "The number is invalid!"
 end
 
 
