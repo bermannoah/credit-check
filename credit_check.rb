@@ -1,15 +1,11 @@
 puts "Enter card number > "
 card_number = gets.chomp.to_s
 
-# allows entry of numbers
-
 usable_array = card_number.chars.map { |num| num.to_i } # converts entry string to integers, individual characters
 
-numbers_to_multiply = usable_array.map.with_index do |num, index|
-  if card_number.length == 15               # checks to see if card_number is an amex, a mc/visa, or an error
+numbers_to_multiply = usable_array.reverse.map.with_index do |num, index|
+  if card_number.length == 15 || card_number.length == 16               # checks to see if card_number is a cc number
     index.odd? ? num * 2 : num              # performs necessary math depending on type of card
-  elsif card_number.length == 16
-    index.even? ? num * 2 : num
   else
     num = 1 # resets num to one so it only puts once!
     puts "That is not a credit card number."
@@ -30,7 +26,7 @@ end
 
 
 
-# Your Luhn Algorithm Here
+# The older version without loops is here, if that's a thing
 
 # a15 = card_number[15]
 # a14 = card_number[14].to_i
